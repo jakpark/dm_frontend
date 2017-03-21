@@ -17,15 +17,14 @@ class Main
       arr.push(line)
     end
     
-    print arr
-    puts
+    arr
   end
   
   
 end
 
 # m = Main.new
-
+# 
 # puts m.parse("./input/1.csv", "space")
 # puts m.parse("./input/2.csv", "comma")
 # puts m.parse("./input/2.csv")
