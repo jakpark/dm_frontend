@@ -24,8 +24,9 @@ class Main
   
 end
 
-m = Main.new
+# m = Main.new
 
-puts m.parse("./input/1.csv", "space")
-puts m.parse("./input/2.csv")
-puts m.parse("./input/3.csv", "pipe")
+# puts m.parse("./input/1.csv", "space")
+# puts m.parse("./input/2.csv", "comma")
+# puts m.parse("./input/2.csv")
+# puts m.parse("./input/3.csv", "pipe")
