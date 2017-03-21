@@ -1,14 +1,15 @@
 require 'csv'
 
 class Main
-  def get_file(filepath)
+  def parse(filepath, separator = ", ")
     arr = []
-    
-    lines = CSV.foreach(filepath) do |line|
+      
+    lines = CSV.foreach(filepath, col_sep: "#{separator}") do |line|
       arr.push(line)
     end
     
-    arr
+    print arr
+    puts
   end
   
   
@@ -16,4 +17,6 @@ end
 
 m = Main.new
 
-puts m.get_file("./input/1.csv")
+puts m.parse("./input/1.csv", " ")
+puts m.parse("./input/2.csv")
+puts m.parse("./input/3.csv", " | ")
