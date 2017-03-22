@@ -6,19 +6,31 @@ RSpec.describe Main, "Unit Tests:" do
   context "Parse:" do
     it "parses files with delimiter: space" do
       expect(main.parse("./lib/input/1.txt")).to eq (
-        [["Kournikova", "Anna", "F", "F", "6-3-1975", "Red"], ["Hingis", "Martina", "M", "F", "4-2-1979", "Green"], ["Seles", "Monica", "H", "F", "12-2-1973", "Black"]]
+        [
+          {:lastname=>"Kournikova", :firstname=>"Anna", :middleinitial=>"F", :gender=>"F", :dateofbirth=>"6-3-1975", :favoritecolor=>"Red"},
+          {:lastname=>"Hingis", :firstname=>"Martina", :middleinitial=>"M", :gender=>"F", :dateofbirth=>"4-2-1979", :favoritecolor=>"Green"},
+          {:lastname=>"Seles", :firstname=>"Monica", :middleinitial=>"H", :gender=>"F", :dateofbirth=>"12-2-1973", :favoritecolor=>"Black"}
+        ]
       )
     end
 
     it "parses files with delimiter: comma" do
       expect(main.parse("./lib/input/2.txt")).to eq (
-        [["Abercrombie", "Neil", "Male", "Tan", "2/13/1943"], ["Bishop", "Timothy", "Male", "Yellow", "4/23/1967"], ["Kelly", "Sue", "Female", "Pink", "7/12/1959"]]
+        [
+          {:lastname=>"Abercrombie", :firstname=>"Neil", :gender=>"Male", :favoritecolor=>"Tan", :dateofbirth=>"2/13/1943"},
+          {:lastname=>"Bishop", :firstname=>"Timothy", :gender=>"Male", :favoritecolor=>"Yellow", :dateofbirth=>"4/23/1967"},
+          {:lastname=>"Kelly", :firstname=>"Sue", :gender=>"Female", :favoritecolor=>"Pink", :dateofbirth=>"7/12/1959"}
+        ]
       )
     end
 
     it "parses files with delimiter: pipe" do
       expect(main.parse("./lib/input/3.txt")).to eq (
-        [["Smith", "Steve", "D", "M", "Red", "3-3-1985"], ["Bonk", "Radek", "S", "M", "Green", "6-3-1975"], ["Bouillon", "Francis", "G", "M", "Blue", "6-3-1975"]]
+        [
+          {:lastname=>"Smith", :firstname=>"Steve", :middleinitial=>"D", :gender=>"M", :favoritecolor=>"Red", :dateofbirth=>"3-3-1985"},
+          {:lastname=>"Bonk", :firstname=>"Radek", :middleinitial=>"S", :gender=>"M", :favoritecolor=>"Green", :dateofbirth=>"6-3-1975"},
+          {:lastname=>"Bouillon", :firstname=>"Francis", :middleinitial=>"G", :gender=>"M", :favoritecolor=>"Blue", :dateofbirth=>"6-3-1975"}
+        ]
       )
     end
 
