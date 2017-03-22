@@ -19,7 +19,7 @@ class Main
       header = headers_space
     end
 
-    body = File.read(filepath).gsub("/", "-")
+    body = File.read(filepath).gsub("-", "/")
     body = header + "\n" + body
 
     arr = []
@@ -43,7 +43,7 @@ class Main
 
   
   def self.format_date_iso(date)
-    formatted = date.split("-").map do |x| 
+    formatted = date.split("/").map do |x| 
        if x.length < 2 
          x = "0" + x
        else
@@ -51,7 +51,7 @@ class Main
        end
     end
     
-    formatted.rotate(-1).join('-') # Rotate ISO: YYYY,MM,DD
+    formatted.rotate(-1).join('/') # Rotate ISO: YYYY,MM,DD
   end
 
 
@@ -85,8 +85,16 @@ puts "Output 1: "
 output1 = output.sort_by { |k| [k[:gender], k[:lastname]]}
 
 puts Main.pretty_print(output1)
+puts
 
 puts "Output 2: "
 output2 = output.sort_by { |k| [Main.format_date_iso(k[:dateofbirth]), k[:lastname]]}
 
 puts Main.pretty_print(output2)
+puts
+
+
+puts "Output 3: "
+output3 = output.sort_by { |k| k[:lastname]}.reverse
+
+puts Main.pretty_print(output3)
