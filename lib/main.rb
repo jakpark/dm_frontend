@@ -41,6 +41,20 @@ class Main
     end
   end
 
+  
+  def self.format_date_iso(date)
+    formatted = date.split("-").map do |x| 
+       if x.length < 2 
+         x = "0" + x
+       else
+         x
+       end
+    end
+    
+    formatted.rotate(-1).join('-') # Rotate ISO: YYYY,MM,DD
+  end
+
+
   def self.pretty_print(arr)
     symbols = %w[lastname firstname gender dateofbirth favoritecolor].map(&:to_sym)
 
@@ -72,5 +86,7 @@ output1 = output.sort_by { |k| [k[:gender], k[:lastname]]}
 
 puts Main.pretty_print(output1)
 
-# puts "Output 2: "
-# puts arr.sort_by { |k| [k[:DateOfBirth], k[:lastname]]}
+puts "Output 2: "
+output2 = output.sort_by { |k| [Main.format_date_iso(k[:dateofbirth]), k[:lastname]]}
+
+puts Main.pretty_print(output2)
