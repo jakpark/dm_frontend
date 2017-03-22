@@ -41,33 +41,36 @@ class Main
     end
   end
 
+  def self.pretty_print(arr)
+    symbols = %w[lastname firstname gender dateofbirth favoritecolor].map(&:to_sym)
+
+    solns = []
+    arr.each do |obj|
+      printrow = []
+
+      symbols.each do |symbol|  
+        printrow.push(obj[symbol])
+      end
+      
+      solns.push(printrow.join(" "))
+    end
+
+    solns
+  end
 
 end
 
 m = Main.new
 
-arr = []
-arr.concat(m.parse("./input/1.txt"))
-arr.concat(m.parse("./input/2.txt"))
-arr.concat(m.parse("./input/3.txt"))
+output = []
+output.concat(m.parse("./input/1.txt"))
+output.concat(m.parse("./input/2.txt"))
+output.concat(m.parse("./input/3.txt"))
 
 puts "Output 1: "
-arr = arr.sort_by { |k| [k[:gender], k[:lastname]]}
-symbols = %w[lastname firstname gender dateofbirth favoritecolor].map(&:to_sym)
+output1 = output.sort_by { |k| [k[:gender], k[:lastname]]}
 
-solns = []
-x = arr.each do |obj|
-  printrow = []
-
-  symbols.each do |symbol|  
-    printrow.push(obj[symbol])
-  end
-  
-  solns.push(printrow.join(" "))
-end
-
-puts solns
-
+puts Main.pretty_print(output1)
 
 # puts "Output 2: "
 # puts arr.sort_by { |k| [k[:DateOfBirth], k[:lastname]]}
