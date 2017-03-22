@@ -53,23 +53,21 @@ arr.concat(m.parse("./input/3.txt"))
 
 puts "Output 1: "
 arr = arr.sort_by { |k| [k[:gender], k[:lastname]]}
+symbols = %w[lastname firstname gender dateofbirth favoritecolor].map(&:to_sym)
+
+solns = []
 x = arr.each do |obj|
-  printrow = ""
-  printrow = obj[:lastname] + " " + obj[:firstname] + " " +
-    obj[:gender] + " " + obj[:dateofbirth] + " " + obj[:favoritecolor]
-  puts printrow
+  printrow = []
+
+  symbols.each do |symbol|  
+    printrow.push(obj[symbol])
+  end
+  
+  solns.push(printrow.join(" "))
 end
 
-puts 
-"Hingis Martina Female 4/2/1979 Green
-Kelly Sue Female 7/12/1959 Pink
-Kournikova Anna Female 6/3/1975 Red
-Seles Monica Female 12/2/1973 Black
-Abercrombie Neil Male 2/13/1943 Tan
-Bishop Timothy Male 4/23/1967 Yellow
-Bonk Radek Male 6/3/1975 Green
-Bouillon Francis Male 6/3/1975 Blue
-Smith Steve Male 3/3/1985 Red"
+puts solns
 
-# puts "sort2: "
+
+# puts "Output 2: "
 # puts arr.sort_by { |k| [k[:DateOfBirth], k[:lastname]]}
